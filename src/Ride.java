@@ -1,4 +1,4 @@
-public class Ride {
+public class Ride implements RideInterface {
     private String name;
     private int duration;
     private Employee operator;
