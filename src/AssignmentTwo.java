@@ -1,5 +1,7 @@
 public class AssignmentTwo {
     public static void main(String[] args) {
+        AssignmentTwo assignment = new AssignmentTwo();
+        assignment.partThree(); // Part 3: Adding and removing visitors from the ride queue
     }
 
     public void partThree() {
