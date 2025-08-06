@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class Ride implements RideInterface {
@@ -160,6 +161,21 @@ public class Ride implements RideInterface {
         }
     }
 
+    public void sortRideHistory() {
+        System.out.println("<--------------- Sorting Ride History --------------->");
+
+        if (rideLogs == null || rideLogs.isEmpty()) {
+            System.out.println("[ERROR] Ride history is empty. Cannot sort.");
+            return;
+        }
+        if (rideLogs.size() < 2) {
+            System.out.println("[INFO] Ride history has only one guest. No sorting needed.");
+            return;
+        }
+
+        Collections.sort(rideLogs, new RideVisitorComparator());
+        System.out.println("Ride history has been sorted by gender and name.");
+    }
 
 
     
