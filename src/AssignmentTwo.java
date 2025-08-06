@@ -2,6 +2,7 @@ public class AssignmentTwo {
     public static void main(String[] args) {
         AssignmentTwo assignment = new AssignmentTwo();
         assignment.partThree(); // Part 3: Adding and removing visitors from the ride queue
+        assignment.partFourA(); // Part 4A: Adding visitors to ride history and checking their presence
     }
 
     public void partThree() {
@@ -54,7 +55,7 @@ public class AssignmentTwo {
         cosmicTwist.addVisitorToHistory(visitor5);
 
         cosmicTwist.printRideHistory();
-        
+
         // Check if a visitor is in history
         cosmicTwist.checkVisitorFromHistory(visitor4); // Should be found
 
