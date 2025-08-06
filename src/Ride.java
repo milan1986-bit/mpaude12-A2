@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Iterator;
 
 public class Ride implements RideInterface {
     private String name;
@@ -7,7 +8,8 @@ public class Ride implements RideInterface {
     private int thrillLevel;
     private Employee operator;
 
-    private Queue<Visitor> waitingLine = new LinkedList<>();
+    private Queue<Visitor> waitingLine;
+    private LinkedList<Visitor> rideLogs;
 
     public Ride() {
 
@@ -91,25 +93,74 @@ public class Ride implements RideInterface {
     }
 
     @Override
-    public void addVisitorToHistory(Visitor visit) {
-
-    }
-
-    @Override
-    public boolean checkVisitorFromHistory(Visitor visit) {
-        return false;
-    }
-
-    @Override
-    public int numberOfVisitors() {
-        return 0;
-    }
-
-    @Override
     public void printRideHistory() {
+
+        System.out.println("<--------------- Ride Participation History --------------->");
+
+        if (rideLogs.isEmpty()) {
+            System.out.println("[INFO] No guests have taken this ride yet.");
+            return;
+        }
+
+        System.out.println("======== Ride Participation History ========");
+        int index = 1;
+        Iterator<Visitor> iterator = rideLogs.iterator();
+        while (iterator.hasNext()) {
+            Visitor guest = iterator.next();
+            System.out.println(index++ + ". Name: " + guest.getName()
+                + " | Gender: " + guest.getGender()
+                + " | Phone Number: " + guest.getPhone()
+                + " | Token Number: " + guest.getTokenNumber());
+        }
+        System.out.println("============================================");
+    }
+
+     @Override
+    public int numberOfVisitors() {
+
+        System.out.println("<--------------- Counting Guests in Ride History --------------->");
+        if (rideLogs.isEmpty()) {
+            System.out.println("[INFO] No guests have taken this ride yet.");
+            return 0;
+        }
+        int count = rideLogs.size();
+        System.out.println("[STATS] Total guests recorded after the ride: " + count);
+        return count;
+    }
+
+    @Override
+    public boolean checkVisitorFromHistory(Visitor guest) {
+
+        System.out.println("<--------------- Checking Guest in Ride History --------------->");
+
+        if (guest == null) {
+            System.out.println("[ERROR] Cannot check a null guest.");
+            return false;
+        }
+        boolean found = rideLogs.contains(guest);
+        if (found) {
+            System.out.println("[INFO] " + guest.getName() + " is found in the ride record.");
+        } else {
+            System.out.println("[INFO] " + guest.getName() + " is NOT found in the ride record.");
+        }
+        return found;
+    }
+
+
+    @Override
+    public void addVisitorToHistory(Visitor guest) {
+        
+        System.out.println("<--------------- Logging Guest in Ride History --------------->");
+
+        if (guest != null) {
+            rideLogs.add(guest);
+            System.out.println("[SUCCESS] " + guest.getName() + " has been logged in the ride record.");
+        } else {
+            System.out.println("[ERROR] Cannot log a null guest.");
+        }
     }
 
 
 
-
+    
 }
