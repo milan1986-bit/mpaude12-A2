@@ -68,7 +68,38 @@ public class AssignmentTwo {
     }
 
     public void partFourB() {
+        // Create an Employee (name, gender, phone, id, department)
+        Employee operator = new Employee("Sally", "Female", "0412 345 678", "E789", "Ride Manager");
+
+        // Create a Ride (name, duration in seconds, thrillLevel, operator)
+        Ride ride = new Ride("Green Lantern Coaster", 135, 5, operator);
+
+        // Create 5 Visitors (name, gender, phone, tokenNumber, visitDetail)
+        Visitor v1 = new Visitor("Mona", "Female", "0401 222 333", "T120", "Fun");
+        Visitor v2 = new Visitor("Zara", "Female", "0403 334 445", "T115", "Excitement");
+        Visitor v3 = new Visitor("Alex", "Male", "0405 556 667", "T140", "Adventure");
+        Visitor v4 = new Visitor("Liam", "Male", "0407 778 889", "T110", "Challenge");
+        Visitor v5 = new Visitor("Ben", "Male", "0409 990 001", "T135", "Thrill");
+
+        // Add to ride history
+        ride.addVisitorToHistory(v1);
+        ride.addVisitorToHistory(v2);
+        ride.addVisitorToHistory(v3);
+        ride.addVisitorToHistory(v4);
+        ride.addVisitorToHistory(v5);
+
+        // Print before sorting
+        System.out.println("\n--- Ride History BEFORE Sorting ---");
+        ride.printRideHistory();
+
+        // Sort visitors (using RideVisitorComparator)
+        ride.sortRideHistory();
+
+        // Print after sorting
+        System.out.println("\n--- Ride History AFTER Sorting ---");
+        ride.printRideHistory();
     }
+
 
     public void partFive() {
     }
