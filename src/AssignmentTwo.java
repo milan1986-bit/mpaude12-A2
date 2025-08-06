@@ -3,6 +3,7 @@ public class AssignmentTwo {
         AssignmentTwo assignment = new AssignmentTwo();
         assignment.partThree(); // Part 3: Adding and removing visitors from the ride queue
         assignment.partFourA(); // Part 4A: Adding visitors to ride history and checking their presence
+        assignment.partFourB(); // Part 4B: Adding visitors to ride history and sorting them
     }
 
     public void partThree() {
