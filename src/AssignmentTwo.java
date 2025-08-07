@@ -103,7 +103,40 @@ public class AssignmentTwo {
 
 
     public void partFive() {
+        Employee operator = new Employee("Cummins", "Male", "0412 123 456", "E104", "Ride Captain");
+        Ride ride = new Ride("Martin Guptil", 145, 4, operator); // maxRider = 4
+
+        String[] names = {"Maria", "Lachlan", "David", "Jack", "JhonSon", "Noah", "Erin", "Chili", "Wood", "Gree"};
+        String[] genders = {"Female", "Male", "Female", "Male", "Female", "Male", "Female", "Male", "Female", "Male"};
+        String[] phones = {"0412 234 111", "0423 555 222", "0434 666 333", "0455 777 444", "0466 888 555", 
+                        "0477 999 666", "0488 000 777", "0499 111 888", "0400 222 999", "0411 333 000"};
+        String[] addresses = { "Albarta","Darwin","Rockhampton","Bendigo","Toowoomba","Mackay","Shepparton","Launceston","Mildura","Coffs Harbour"};
+
+
+        for (int i = 0; i < 10; i++) {
+            Visitor visitor = new Visitor(
+                names[i],
+                genders[i],
+                phones[i],
+                "A2" + String.format("%02d", i + 1),
+                "Enjoyment in " + addresses[i]
+            );
+            ride.addVisitorToQueue(visitor);
+        }
+
+        System.out.println("\n--- Queue BEFORE running the cycle ---");
+        ride.printQueue();
+
+        System.out.println("\n--- Running one ride cycle ---");
+        ride.runOneCycle();
+
+        System.out.println("\n--- Queue AFTER one cycle ---");
+        ride.printQueue();
+
+        System.out.println("\n--- Ride History AFTER one cycle ---");
+        ride.printRideHistory();
     }
+
 
     public void partSix() {
     }
