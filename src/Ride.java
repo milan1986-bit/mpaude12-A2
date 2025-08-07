@@ -58,7 +58,7 @@ public class Ride implements RideInterface {
     public void setNumOfCycles(int numOfCycles) { 
         this.numOfCycles = numOfCycles; 
     }
-    
+
 
     @Override
     public void printQueue() {
@@ -105,10 +105,34 @@ public class Ride implements RideInterface {
     }
        
     
-    @Override
     public void runOneCycle() {
+        
+        System.out.println("<--------------- Running One Cycle of the Ride --------------->");
+        if (operator == null) {
+            System.out.println("Ride can't start — no operator is currently assigned.");
+            return;
+        }
+
+        if (waitingLine.isEmpty()) {
+            System.out.println("Ride can't start — no visitors are waiting in the queue.");
+            return;
+        }
+
+        int ridersThisCycle = Math.min(maxRider, waitingLine.size());
+
+        System.out.println("Kicking off the ride! Taking " + ridersThisCycle + " visitor(s) this cycle.");
+
+        for (int i = 0; i < ridersThisCycle; i++) {
+            Visitor rider = waitingLine.poll(); // remove from queue
+            rideLogs.add(rider);               // add to history
+            System.out.println("Visitor " + rider.getName() + " has hopped on the ride.");
+        }
+
+        numOfCycles++;
+        System.out.println("That’s a wrap for this cycle! Total rides run so far: " + numOfCycles);
 
     }
+
 
     @Override
     public void printRideHistory() {
