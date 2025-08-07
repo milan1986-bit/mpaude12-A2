@@ -6,8 +6,9 @@ import java.util.Iterator;
 public class Ride implements RideInterface {
     private String name;
     private int duration;
-    private int thrillLevel;
+    private int maxRider;
     private Employee operator;
+    private int numOfCycles = 0;
 
     private Queue<Visitor> waitingLine;
     private LinkedList<Visitor> rideLogs;
@@ -16,11 +17,14 @@ public class Ride implements RideInterface {
 
     }
 
-    public Ride(String name, int duration, int thrillLevel, Employee operator) {
+    public Ride(String name, int duration, int maxRider, Employee operator) {
         this.name = name;
         this.duration = duration;
-        this.thrillLevel = thrillLevel;
+        this.maxRider = maxRider;
         this.operator = operator;
+        this.numOfCycles = 0;
+        this.waitingLine = new LinkedList<>();
+        this.rideLogs = new LinkedList<>();
     }
     public String getName() {
          return name; 
@@ -42,6 +46,19 @@ public class Ride implements RideInterface {
     public void setOperator(Employee operator) { 
         this.operator = operator; 
     }
+    public int getMaxRider() { 
+        return maxRider; 
+    }
+    public void setMaxRider(int maxRider) { 
+        this.maxRider = maxRider; 
+    }
+    public int getNumOfCycles() { 
+        return numOfCycles; 
+    }
+    public void setNumOfCycles(int numOfCycles) { 
+        this.numOfCycles = numOfCycles; 
+    }
+    
 
     @Override
     public void printQueue() {
