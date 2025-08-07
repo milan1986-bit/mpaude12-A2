@@ -4,6 +4,8 @@ public class AssignmentTwo {
         assignment.partThree(); // Part 3: Adding and removing visitors from the ride queue
         assignment.partFourA(); // Part 4A: Adding visitors to ride history and checking their presence
         assignment.partFourB(); // Part 4B: Adding visitors to ride history and sorting them
+        assignment.partFive(); // Part 5: Running a ride cycle with multiple visitors
+        
     }
 
     public void partThree() {
