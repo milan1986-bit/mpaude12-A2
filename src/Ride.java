@@ -1,5 +1,8 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
 
@@ -106,7 +109,7 @@ public class Ride implements RideInterface {
        
     
     public void runOneCycle() {
-        
+
         System.out.println("<--------------- Running One Cycle of the Ride --------------->");
         if (operator == null) {
             System.out.println("Ride can't start — no operator is currently assigned.");
@@ -217,6 +220,41 @@ public class Ride implements RideInterface {
         Collections.sort(rideLogs, new RideVisitorComparator());
         System.out.println("Ride history has been sorted by gender and name.");
     }
+
+    public void exportRideHistory() {
+
+        System.out.println("<--------------- Exporting Ride History to CSV --------------->");
+        if (rideLogs.isEmpty()) {
+            System.out.println("[ERROR] Ride logs is empty. Cannot export.");
+            return;
+        }
+
+        String fileName = "ride_logs.csv";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            // Write CSV header
+            writer.write("Name,Gender,Phone,Token Number,Detail For the Visit");
+            writer.newLine();
+
+            // Write each visitor's data
+            for (Visitor v : rideLogs) {
+                String line = String.format("%s,%s,%s,%s,%s\n",
+                        v.getName(),
+                        v.getGender(),
+                        v.getPhone(),
+                        v.getTokenNumber(),
+                        v.getVisitDetail());
+                writer.write(line);
+                writer.newLine();
+            }
+
+            System.out.println("[Success]: Ride logs successfully exported to " + fileName);
+        } catch (IOException e) {
+            System.err.println("[Error]: Error writing to file: " + e.getMessage());
+            e.printStackTrace(); // Helps debug in development
+        }
+    }
+
 
 
     
