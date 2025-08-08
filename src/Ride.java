@@ -238,7 +238,7 @@ public class Ride implements RideInterface {
 
             // Write each visitor's data
             for (Visitor v : rideLogs) {
-                String line = String.format("\"%s\",%d,\"%s\",\"%s\",\"%s\"",
+                String line = String.format("%s,%s,%s,%s,%s\n",
                         v.getName(),
                         v.getGender(),
                         v.getPhone(),
