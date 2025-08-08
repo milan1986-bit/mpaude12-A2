@@ -5,7 +5,7 @@ public class AssignmentTwo {
         assignment.partFourA(); // Part 4A: Adding visitors to ride history and checking their presence
         assignment.partFourB(); // Part 4B: Adding visitors to ride history and sorting them
         assignment.partFive(); // Part 5: Running a ride cycle with multiple visitors
-        
+
     }
 
     public void partThree() {
@@ -72,41 +72,41 @@ public class AssignmentTwo {
 
     public void partFourB() {
         // Create an Employee (name, gender, phone, id, department)
-        Employee operator = new Employee("Sally", "Female", "0412 345 678", "E789", "Ride Manager");
+        Employee operatorInCharge = new Employee("Sally", "Female", "0412 345 678", "E789", "Ride Manager");
 
         // Create a Ride (name, duration in seconds, thrillLevel, operator)
-        Ride ride = new Ride("Green Lantern Coaster", 135, 5, operator);
+        Ride cosmicTwist = new Ride("Green Lantern Coaster", 135, 5, operatorInCharge);
 
         // Create 5 Visitors (name, gender, phone, tokenNumber, visitDetail)
-        Visitor v1 = new Visitor("Mona", "Female", "0401 222 333", "T120", "Fun");
-        Visitor v2 = new Visitor("Zara", "Female", "0403 334 445", "T115", "Excitement");
-        Visitor v3 = new Visitor("Alex", "Male", "0405 556 667", "T140", "Adventure");
-        Visitor v4 = new Visitor("Liam", "Male", "0407 778 889", "T110", "Challenge");
-        Visitor v5 = new Visitor("Ben", "Male", "0409 990 001", "T135", "Thrill");
+        Visitor visitor1 = new Visitor("Mona", "Female", "0401 222 333", "T120", "Fun");
+        Visitor visitor2 = new Visitor("Zara", "Female", "0403 334 445", "T115", "Excitement");
+        Visitor visitor3 = new Visitor("Alex", "Male", "0405 556 667", "T140", "Adventure");
+        Visitor visitor4 = new Visitor("Liam", "Male", "0407 778 889", "T110", "Challenge");
+        Visitor visitor5 = new Visitor("Ben", "Male", "0409 990 001", "T135", "Thrill");
 
         // Add to ride history
-        ride.addVisitorToHistory(v1);
-        ride.addVisitorToHistory(v2);
-        ride.addVisitorToHistory(v3);
-        ride.addVisitorToHistory(v4);
-        ride.addVisitorToHistory(v5);
+        cosmicTwist.addVisitorToHistory(visitor1);
+        cosmicTwist.addVisitorToHistory(visitor2);
+        cosmicTwist.addVisitorToHistory(visitor3);
+        cosmicTwist.addVisitorToHistory(visitor4);
+        cosmicTwist.addVisitorToHistory(visitor5);
 
         // Print before sorting
         System.out.println("\n--- Ride History BEFORE Sorting ---");
-        ride.printRideHistory();
+        cosmicTwist.printRideHistory();
 
         // Sort visitors (using RideVisitorComparator)
-        ride.sortRideHistory();
+        cosmicTwist.sortRideHistory();
 
         // Print after sorting
         System.out.println("\n--- Ride History AFTER Sorting ---");
-        ride.printRideHistory();
+        cosmicTwist.printRideHistory();
     }
 
 
     public void partFive() {
-        Employee operator = new Employee("Cummins", "Male", "0412 123 456", "E104", "Ride Captain");
-        Ride ride = new Ride("Martin Guptil", 145, 4, operator); // maxRider = 4
+        Employee operatorInCharge = new Employee("Cummins", "Male", "0412 123 456", "E104", "Ride Captain");
+        Ride cosmicTwist = new Ride("Martin Guptil", 145, 4, operatorInCharge); // maxRider = 4
 
         String[] names = {"Maria", "Lachlan", "David", "Jack", "JhonSon", "Noah", "Erin", "Chili", "Wood", "Gree"};
         String[] genders = {"Female", "Male", "Female", "Male", "Female", "Male", "Female", "Male", "Female", "Male"};
@@ -123,24 +123,38 @@ public class AssignmentTwo {
                 "A2" + String.format("%02d", i + 1),
                 "Enjoyment in " + addresses[i]
             );
-            ride.addVisitorToQueue(visitor);
+            cosmicTwist.addVisitorToQueue(visitor);
         }
 
         System.out.println("\n--- Queue BEFORE running the cycle ---");
-        ride.printQueue();
+        cosmicTwist.printQueue();
 
         System.out.println("\n--- Running one ride cycle ---");
-        ride.runOneCycle();
+        cosmicTwist.runOneCycle();
 
         System.out.println("\n--- Queue AFTER one cycle ---");
-        ride.printQueue();
+        cosmicTwist.printQueue();
 
         System.out.println("\n--- Ride History AFTER one cycle ---");
-        ride.printRideHistory();
+        cosmicTwist.printRideHistory();
     }
 
 
     public void partSix() {
+
+
+        Employee operatorInCharge = new Employee("Chloe", "Female", "0412 345 678", "E888", "Safety Lead");
+
+        Ride cosmicTwist = new Ride("Justice League Ride", 120, 3, operatorInCharge);
+
+        // Add 5 visitors to ride history
+        cosmicTwist.addVisitorToHistory(new Visitor("Liam", "Male", "0400 123 456", "T201", "Hero Fans"));
+        cosmicTwist.addVisitorToHistory(new Visitor("Olivia", "Female", "0401 234 567", "T202", "Curiosity"));
+        cosmicTwist.addVisitorToHistory(new Visitor("Noah", "Male", "0402 345 678", "T203", "Fun"));
+        cosmicTwist.addVisitorToHistory(new Visitor("Ava", "Female", "0403 456 789", "T204", "Family"));
+        cosmicTwist.addVisitorToHistory(new Visitor("Jack", "Male", "0404 567 890", "T205", "Chill"));
+
+
     }
 
     public void partSeven() {
