@@ -63,7 +63,7 @@ public class AssignmentTwo {
         cosmicTwist.checkVisitorFromHistory(visitor4); // Should be found
 
         // Get total number of visitors
-        cosmicTwist.numberOfVisitors();
+        System.out.println("\nTotal number of visitors in ride history: " + cosmicTwist.numberOfVisitors());
 
         // Print ride history
         cosmicTwist.printRideHistory();
