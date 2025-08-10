@@ -159,5 +159,24 @@ public class AssignmentTwo {
     }
 
     public void partSeven() {
+        // Create ride operator and ride
+        Employee operatorInCharge = new Employee("Lara", "Female", "+61 412 345 678", "E1001", "Ride Supervisor");
+        Ride cosmicTwist = new Ride("Superman Escape", 140, 5, operatorInCharge);
+
+        System.out.println("<--------------- Adding Visitors to Ride History --------------->");
+        // Add them to ride history
+        cosmicTwist.addVisitorToHistory(new Visitor("Jack Thompson", "Male", "+61 400 111 222", "T001", "Adventure"));
+        cosmicTwist.addVisitorToHistory(new Visitor("Emily Watson", "Female", "+61 400 333 444", "T002", "Birthday"));
+        cosmicTwist.addVisitorToHistory(new Visitor("Oliver White", "Male", "+61 400 555 666", "T003", "Holiday Trip"));
+        cosmicTwist.addVisitorToHistory(new Visitor("Sophie Lee", "Female", "+61 400 777 888", "T004", "Fun"));
+        cosmicTwist.addVisitorToHistory(new Visitor("Liam Harris", "Male", "+61 400 999 000", "T005", "First Visit"));
+
+        // Import from file (simulate merge or overwrite)
+        cosmicTwist.importRideHistory();
+
+        // Output total and visitor details
+        System.out.println("\nTotal visitors imported: " + cosmicTwist.numberOfVisitors());
+        System.out.println("\nImported Visitor Details:");
+        cosmicTwist.printRideHistory();
     }
 }
