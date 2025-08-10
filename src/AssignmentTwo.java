@@ -6,6 +6,7 @@ public class AssignmentTwo {
         assignment.partFourB(); // Part 4B: Adding visitors to ride history and sorting them
         assignment.partFive(); // Part 5: Running a ride cycle with multiple visitors
         assignment.partSix(); // Part 6: Adding visitors to ride history
+        assignment.partSeven(); // Part 7: Importing ride history from a file
 
     }
 
@@ -155,7 +156,7 @@ public class AssignmentTwo {
         cosmicTwist.addVisitorToHistory(new Visitor("Ava", "Female", "0403 456 789", "T204", "Family"));
         cosmicTwist.addVisitorToHistory(new Visitor("Jack", "Male", "0404 567 890", "T205", "Chill"));
 
-
+        cosmicTwist.exportRideHistory();
     }
 
     public void partSeven() {
