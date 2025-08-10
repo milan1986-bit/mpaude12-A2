@@ -1,6 +1,9 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collections;
@@ -254,6 +257,53 @@ public class Ride implements RideInterface {
             e.printStackTrace(); // Helps debug in development
         }
     }
+
+    public void importRideHistory() {
+
+        System.out.println("<--------------- Importing Ride History from CSV --------------->");
+
+        String fileName = "ride_logs.csv";
+        File file = new File(fileName);
+
+        if (!file.exists()) {
+            System.out.println("No ride history file found to import.");
+            return;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            int lineNumber = 0;
+            while ((line = reader.readLine()) != null) {
+                lineNumber++;
+                String[] parts = line.split(",");
+
+                if (parts.length != 5) {
+                    System.out.println("Skipped invalid line " + lineNumber + ": " + line);
+                    continue;
+                }
+
+                try {
+                    String name = parts[0].trim();
+                    String gender = parts[1].trim();
+                    String phone = parts[2].trim();
+                    String tockenNumber = parts[3].trim();
+                    String visitDetails = parts[4].trim();
+
+                    Visitor visitor = new Visitor(name, gender, phone, tockenNumber, visitDetails);
+                    addVisitorToHistory(visitor);
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Invalid age format at line " + lineNumber + ": " + parts[1]);
+                } catch (Exception ex) {
+                    System.out.println("Error processing line " + lineNumber + ": " + ex.getMessage());
+                }
+            }
+
+            System.out.println("Ride history successfully imported from " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error reading from file: " + e.getMessage());
+        }
+    }
+
 
 
 
